@@ -20,8 +20,8 @@
     "format:md": "remark-preset-davidtheclark --format",
     "format:check": "prettier \"**/*.{js,ts,json,yml,yaml}\" --check",
     "typescript": "tsc",
-    "test": "jest --coverage",
-    "test:watch": "jest --watch",
+    "test": "node --experimental-vm-modules node_modules/.bin/jest --coverage",
+    "test:watch": "node --experimental-vm-modules node_modules/.bin/jest --watchAll",
     "check:all": "npm run test && npm run typescript && npm run lint && npm run format:check",
     "prepublishOnly": "npm run check:all && npm run build"
   },
@@ -71,6 +71,7 @@
     "tabWidth": 2
   },
   "jest": {
+    "testRunner": "jest-circus/runner",
     "testEnvironment": "node",
     "collectCoverageFrom": [
       "src/**/*.{js,ts}"
@@ -131,7 +132,8 @@
     "eslint-plugin-jest": "^23.18.0",
     "eslint-plugin-node": "^11.1.0",
     "husky": "^4.2.5",
-    "jest": "^26.1.0",
+    "jest": "^26.6.3",
+    "jest-circus": "^26.6.3",
     "lint-staged": "^10.2.11",
     "make-dir": "^3.1.0",
     "parent-module": "^2.0.0",
